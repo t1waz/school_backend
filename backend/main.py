@@ -9,8 +9,12 @@ async def homepage(request):
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
 
+async def google(request):
+    return JSONResponse({'Here is google' : 'something went wrong'})
+
 
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/lesson', school),
+    Route('/google', google),
 ])
