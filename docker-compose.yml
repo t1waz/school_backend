@@ -6,8 +6,11 @@ services:
     build:
       context: .
       dockerfile: compose/backend/Dockerfile
-    command: uvicorn main:app --port 8000 --host 0.0.0.0    
+    command: uvicorn main:app --port 8000 --host 0.0.0.0
     volumes:
       - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
     ports:
       - 127.0.0.1:8000:8000
