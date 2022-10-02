@@ -18,5 +18,3 @@ app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/capybara', capybara_endpoint)
 ])
-
-
