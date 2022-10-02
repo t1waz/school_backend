@@ -5,6 +5,9 @@ from starlette.routing import Route
 import base64
 
 
+async def test(request):
+    return PlainTextResponse('test')
+
 async def homepage(request):
     return JSONResponse({'hello': 'world'})
 
@@ -18,4 +21,7 @@ async def capybara_endpoint(request):
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/capybara', capybara_endpoint),
+    Route('/test', test)
 ])
+
+
