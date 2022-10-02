@@ -1,3 +1,4 @@
+from datetime import datetime
 from starlette.applications import Starlette
 from starlette.endpoints import HTTPEndpoint
 from starlette.requests import Request
@@ -19,6 +20,9 @@ class HealthCheckEndpoint(HTTPEndpoint):
 async def homepage(request):
     return JSONResponse({'hello': 'world'})
 
+async def julian_endpoint(request):
+    return JSONResponse({'date': str(datetime.now())})
+
 
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
@@ -30,6 +34,7 @@ async def google(request):
 
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
+    Route('/julian', julian_endpoint),
     Route('/lesson', school),
     Route('/google', google),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
