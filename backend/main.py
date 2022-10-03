@@ -2,8 +2,7 @@ from datetime import datetime
 from starlette.applications import Starlette
 from starlette.endpoints import HTTPEndpoint
 from starlette.requests import Request
-from starlette.responses import JSONResponse
-from starlette.responses import RedirectResponse
+from starlette.responses import JSONResponse, RedirectResponse
 from starlette.routing import Route
 
 import constants
