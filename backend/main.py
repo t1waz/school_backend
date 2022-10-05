@@ -24,7 +24,7 @@ async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
 async def oliwier(request):
-    return JSONResponse({'Oliwier is': "Fisherman"})
+    return JSONResponse({'Oliwier is':"Fisherman"})
 
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
