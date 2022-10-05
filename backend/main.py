@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, date
+from json import detect_encoding
 from starlette.applications import Starlette
 from starlette.endpoints import HTTPEndpoint
 from starlette.requests import Request
@@ -6,7 +7,6 @@ from starlette.responses import JSONResponse
 from starlette.routing import Route
 
 import constants
-
 
 class HealthCheckEndpoint(HTTPEndpoint):
     """
@@ -23,6 +23,8 @@ async def homepage(request):
 async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
+async def oliwier(request):
+    return JSONResponse({'Oliwier is': "Fisherman"})
 
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
@@ -37,5 +39,6 @@ app = Starlette(debug=True, routes=[
     Route('/julian', julian_endpoint),
     Route('/lesson', school),
     Route('/google', google),
+    Route('/oliwier', oliwier),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
