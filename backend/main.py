@@ -23,14 +23,14 @@ async def homepage(request):
 async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
-
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
-
 
 async def google(request):
     return JSONResponse({'Here is google': 'something went wrong'})
 
+async def piotrek_endpoint(request):
+    return JSONResponse({'My late counter ':'∞'})
 
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
@@ -48,6 +48,7 @@ app = Starlette(debug=True, routes=[
     Route('/julian', julian_endpoint),
     Route('/lesson', school),
     Route('/google', google),
+    Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
