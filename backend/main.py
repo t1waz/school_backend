@@ -24,7 +24,7 @@ async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
 async def school(request):
-    return JSONResponse({'lesson': 'software engineering'})
+    return JSONResponse({'lesson': 'software engineering'})x
 
 async def google(request):
     return JSONResponse({'Here is google': 'something went wrong'})
