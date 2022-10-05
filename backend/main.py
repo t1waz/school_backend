@@ -25,16 +25,18 @@ async def school(request):
 
 async def shanties(request):
     f = open('./shanties.txt', 'r')
-    return Response(f.read(), media_type='text/plain')
+    text = f.read()
+    f.close()
+    return Response(text, media_type='text/plain')
 
 async def google(request):
-    return JSONResponse({'Here is google': 'something went wrong'})
+    return JSONResponse({'Here is google': 'something is no yes'})
 
 
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/lesson', school),
-    Route('/shanties', shanties)
+    Route('/shanties', shanties),
     Route('/google', google),
-    Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
+    Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint)
 ])
