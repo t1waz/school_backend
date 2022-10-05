@@ -35,6 +35,8 @@ async def google(request):
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
 
+async def cos(request):
+    return JSONResponse({'cos': str(request.__dict__)})
 
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
@@ -42,5 +44,6 @@ app = Starlette(debug=True, routes=[
     Route('/lesson', school),
     Route('/google', google),
     Route('/mayonnaise', mayonnaise),
+    Route('/cos', cos),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
