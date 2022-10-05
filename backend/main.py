@@ -47,5 +47,6 @@ app = Starlette(debug=True, routes=[
     Route('/lesson', school),
     Route('/google', google),
     Route('/mayonnaise', mayonnaise),
+    Route('/tomasz', tomasz),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
