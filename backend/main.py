@@ -36,11 +36,16 @@ async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
 
 
+async def smieluuu_endpoint(request):
+    return JSONResponse({'Heart beat faster 🚨 🚨 🚨': 'https://www.youtube.com/channel/UCGzfVcYJ4BaRFNCvKawVj4Q/videos'})
+
+
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/julian', julian_endpoint),
     Route('/lesson', school),
     Route('/google', google),
     Route('/mayonnaise', mayonnaise),
+    Route('/smieluuu', smieluuu_endpoint),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
