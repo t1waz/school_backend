@@ -30,7 +30,7 @@ async def school(request):
 
 
 async def tomasz(request):
-    return RedirectResponse({'https://www.youtube.com/watch?v=AFhZxua-2P8': 303})
+    return JSONResponse({'concrete workers from england, you have greetings from poland, co..cooo.cooo..concrete!': "https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0"})
 
 
 async def google(request):
