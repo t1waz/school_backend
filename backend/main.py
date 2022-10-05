@@ -20,12 +20,17 @@ class HealthCheckEndpoint(HTTPEndpoint):
 async def homepage(request):
     return JSONResponse({'hello': 'world'})
 
+
 async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
 
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
+
+
+async def tomasz(request):
+    return RedirectResponse({'https://www.youtube.com/watch?v=AFhZxua-2P8': 303})
 
 
 async def google(request):
