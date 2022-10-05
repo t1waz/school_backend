@@ -1,4 +1,5 @@
-from datetime import datetime
+from datetime import datetime, date
+from json import detect_encoding
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse, Response
 from starlette.endpoints import HTTPEndpoint
@@ -9,7 +10,6 @@ from starlette.routing import Route
 
 import constants
 import base64
-
 
 class HealthCheckEndpoint(HTTPEndpoint):
     """
@@ -53,6 +53,10 @@ async def capybara_endpoint(request):
 async def tomasz(request):
     return JSONResponse({'concrete workers from england, you have greetings from poland, co..cooo.cooo..concrete!': "https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0"})
 
+
+async def oliwier(request):
+    return JSONResponse({'Oliwier is':"Fisherman"})
+
 async def drunkensailor(request):
 	return JSONResponse({'with the drunken sailor':'early in the morning'})
 
@@ -66,6 +70,10 @@ app = Starlette(debug=True, routes=[
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
     Route('/tomasz', tomasz),
+
+    Route('/oliwier', oliwier),
+
     Route('/whatdowedo', drunkensailor)
+
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
