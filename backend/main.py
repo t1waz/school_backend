@@ -1,7 +1,9 @@
 from datetime import datetime
 from starlette.applications import Starlette
+from starlette.responses import JSONResponse, Response
 from starlette.endpoints import HTTPEndpoint
 from starlette.requests import Request
+
 from starlette.responses import JSONResponse, RedirectResponse, PlainTextResponse
 from starlette.routing import Route
 
@@ -26,8 +28,15 @@ async def julian_endpoint(request):
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
 
+
+async def shanties(request):
+    f = open('./shanties.txt', 'r')
+    text = f.read()
+    f.close()
+    return Response(text, media_type='text/plain')
+
 async def google(request):
-    return JSONResponse({'Here is google': 'something went wrong'})
+    return JSONResponse({'Here is google': 'something is no yes'})
 
 async def piotrek_endpoint(request):
     return JSONResponse({'My late counter ':'∞'})
@@ -50,6 +59,7 @@ app = Starlette(debug=True, routes=[
     Route('/capybara', capybara_endpoint),
     Route('/julian', julian_endpoint),
     Route('/lesson', school),
+    Route('/shanties', shanties),
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
