@@ -44,7 +44,7 @@ async def capybara_endpoint(request):
 async def tomasz(request):
     return JSONResponse({'concrete workers from england, you have greetings from poland, co..cooo.cooo..concrete!': "https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0"})
 
-aysnc def drunkensailor(request):
+async def drunkensailor(request):
 	return JSONResponse({'with the drunken sailor':'early in the morning'})
 
 app = Starlette(debug=True, routes=[
