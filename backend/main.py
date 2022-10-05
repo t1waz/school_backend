@@ -35,6 +35,8 @@ async def piotrek_endpoint(request):
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
 
+async def apple(request):
+    return RedirectResponse("https://apple.com")
 
 async def capybara_endpoint(request):
     return PlainTextResponse(base64.b64decode("""
@@ -53,6 +55,7 @@ app = Starlette(debug=True, routes=[
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
-    Route('/tomasz', tomasz),
+    Route('/tomasz', apple),
+    Route('/apple', tomasz),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
