@@ -30,7 +30,7 @@ async def google(request):
     return JSONResponse({'Here is google': 'something went wrong'})
 
 async def piotrek_endpoint(request):
-    return JSONResponse({'My late counter': '∞'})
+    return JSONResponse({'My late counter ':'∞'})
 
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
