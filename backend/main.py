@@ -23,9 +23,8 @@ async def homepage(request):
 async def julian_endpoint(request):
     return JSONResponse({'date': str(datetime.now())})
 
-async def school(request):
-    return JSONResponse({'lesson': 'software engineering'})
-
+async def fail(request):
+    return JSONResponse({'error': 'not working you ask why? because i said so'})
 async def google(request):
     return JSONResponse({'Here is google': 'something went wrong'})
 
@@ -49,7 +48,7 @@ app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/capybara', capybara_endpoint),
     Route('/julian', julian_endpoint),
-    Route('/lesson', school),
+    Route('/error', fail),
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
