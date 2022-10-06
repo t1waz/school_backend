@@ -44,6 +44,9 @@ async def piotrek_endpoint(request):
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
 
+async def beata_endpoint(request):
+    return JSONResponse({'huggy wuggy': 'to on uciekam stad'})
+
 
 async def capybara_endpoint(request):
     return PlainTextResponse(base64.b64decode("""
