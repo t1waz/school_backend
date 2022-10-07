@@ -44,6 +44,8 @@ async def piotrek_endpoint(request):
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
 
+async def smieluuu_endpoint(request):
+    return JSONResponse({'Heart beat faster 🚨 🚨 🚨': 'https://www.youtube.com/channel/UCGzfVcYJ4BaRFNCvKawVj4Q/videos'})
 
 async def capybara_endpoint(request):
     return PlainTextResponse(base64.b64decode("""
@@ -59,6 +61,9 @@ async def oliwier(request):
 
 async def drunkensailor(request):
 	return JSONResponse({'with the drunken sailor':'early in the morning'})
+  
+async def smieluuu_endpoint(request):
+    return JSONResponse({'Heart beat faster 🚨 🚨 🚨': 'https://www.youtube.com/channel/UCGzfVcYJ4BaRFNCvKawVj4Q/videos'})
 
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
@@ -69,11 +74,13 @@ app = Starlette(debug=True, routes=[
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
+    Route('/smieluuu', smieluuu_endpoint),
     Route('/tomasz', tomasz),
 
     Route('/oliwier', oliwier),
 
-    Route('/whatdowedo', drunkensailor)
+    Route('/whatdowedo', drunkensailor),
 
+    Route('/smieluuu', smieluuu_endpoint),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
