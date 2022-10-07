@@ -1,13 +1,15 @@
-from datetime import datetime
+from datetime import datetime, date
+from json import detect_encoding
 from starlette.applications import Starlette
+from starlette.responses import JSONResponse, Response
 from starlette.endpoints import HTTPEndpoint
 from starlette.requests import Request
+
 from starlette.responses import JSONResponse, RedirectResponse, PlainTextResponse
 from starlette.routing import Route
 
 import constants
 import base64
-
 
 class HealthCheckEndpoint(HTTPEndpoint):
     """
@@ -26,14 +28,24 @@ async def julian_endpoint(request):
 async def school(request):
     return JSONResponse({'lesson': 'software engineering'})
 
+
+async def shanties(request):
+    f = open('./shanties.txt', 'r')
+    text = f.read()
+    f.close()
+    return Response(text, media_type='text/plain')
+
 async def google(request):
-    return JSONResponse({'Here is google': 'something went wrong'})
+    return JSONResponse({'Here is google': 'something is no yes'})
 
 async def piotrek_endpoint(request):
     return JSONResponse({'My late counter ':'∞'})
 
 async def mayonnaise(request):
     return RedirectResponse('https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0', 303)
+
+async def smieluuu_endpoint(request):
+    return JSONResponse({'Heart beat faster 🚨 🚨 🚨': 'https://www.youtube.com/channel/UCGzfVcYJ4BaRFNCvKawVj4Q/videos'})
 
 async def cos(request):
     return JSONResponse({'ty for ip': str(request.client.host)})
@@ -47,15 +59,29 @@ async def tomasz(request):
     return JSONResponse({'concrete workers from england, you have greetings from poland, co..cooo.cooo..concrete!': "https://www.youtube.com/embed/9K2Y-rfUy_4?autoplay=1&mute=1&controls=0"})
 
 
+async def oliwier(request):
+    return JSONResponse({'Oliwier is':"Fisherman"})
+
+async def drunkensailor(request):
+	return JSONResponse({'with the drunken sailor':'early in the morning'})
+  
+async def smieluuu_endpoint(request):
+    return JSONResponse({'Heart beat faster 🚨 🚨 🚨': 'https://www.youtube.com/channel/UCGzfVcYJ4BaRFNCvKawVj4Q/videos'})
+
 app = Starlette(debug=True, routes=[
     Route('/hello', homepage),
     Route('/capybara', capybara_endpoint),
     Route('/julian', julian_endpoint),
     Route('/lesson', school),
+    Route('/shanties', shanties),
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
+    Route('/smieluuu', smieluuu_endpoint),
     Route('/tomasz', tomasz),
+    Route('/oliwier', oliwier),
+    Route('/whatdowedo', drunkensailor),
+    Route('/smieluuu', smieluuu_endpoint),
     Route('/cos', cos),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
