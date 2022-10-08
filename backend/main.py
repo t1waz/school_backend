@@ -74,13 +74,9 @@ app = Starlette(debug=True, routes=[
     Route('/google', google),
     Route('/piotrek', piotrek_endpoint),
     Route('/mayonnaise', mayonnaise),
-    Route('/smieluuu', smieluuu_endpoint),
     Route('/tomasz', tomasz),
-
     Route('/oliwier', oliwier),
-
     Route('/whatdowedo', drunkensailor),
-
     Route('/smieluuu', smieluuu_endpoint),
     Route(constants.HEALTH_CHECK_ENDPOINT, HealthCheckEndpoint),
 ])
